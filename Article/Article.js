@@ -163,6 +163,13 @@ contentIII.textContent = p3;
 // creates buttion in memory and adds class
 const button = document.createElement('span');
 button.classList.add('expandButton');
+button.textContent = "Read More";
+
+// adds event listener to the expand button
+button.addEventListener('click' , (e) => {
+  article.classList.toggle("article-open");
+  button.textContent = "Read Less";
+})
 
 article.appendChild(title);
 article.appendChild(date);

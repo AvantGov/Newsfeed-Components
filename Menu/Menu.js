@@ -37,40 +37,46 @@ let menuItems = [
   
 */
 
+
+
+ 
+
 // creates a function
 
-const showMenu = (menuArray) => {
+
+
+
+const constructMenu = (menuArray) => {
+  //  creates parent div and add menu class 
   const menuParent = document.createElement('div');
   menuParent.classList.add('menu');
-
-  const menuUL = document.createElement('ul');
-
-  const menuLiI = document.createElement('li');
-  const menuLiII = document.createElement('li');
-  const menuLiIII = document.createElement('li');
-  const menuLiIV = document.createElement('li');
-  const menuLiV = document.createElement('li');
-  const menuLiVI = document.createElement('li');
-
   
-  menuUL.appendChild(menuLiI);
-  menuUL.appendChild(menuLiII);
-  menuUL.appendChild(menuLiIII);
-  menuUL.appendChild(menuLiIV);
-  menuUL.appendChild(menuLiV);
-  menuUL.appendChild(menuLiVI);
+  // creates menu UL and appends to parent class 
+  const menuUL = document.createElement('ul');
   menuParent.appendChild(menuUL);
+
+  // creates LI items, adds text, and appends them to the UL element
+  menuArray.forEach(item => {
+    let menuLink = document.createElement('li');
+    menuLink.textContent = item;
+    menuUL.appendChild(menuLink);
+  });
+
+  // creates an event listener that toggles the menu show class on a click 
+  let menuButton = document.querySelector('.menu-button');
+    menuButton.addEventListener('click', (e) => {
+      menuParent.classList.toggle("menu--open");
+  })
 
   return menuParent;
 }
 
+// selects the header element and append the menu component to the header 
+const header = document.querySelector('.header');
+
+let menuAppear = constructMenu(menuItems);
+header.appendChild(menuAppear);
 
 
 
-
-
-let menuButton = document.querySelector('.menu-button');
-menuButton.addEventListener('click', (e) => {
-  menuParent.classList.toggle("menu--open");
-})
 
