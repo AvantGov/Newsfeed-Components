@@ -85,10 +85,28 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Cochella Tickets: three easy payments of a human soul',
+    date: 'Jun 6st, 2016',
+    firstParagraph: `Stumptown meh quinoa marfa cold-pressed raclette chia. Portland raw denim echo park gluten-free 8-bit mlkshk quinoa, cred pour-over. 
+    Cronut meggings brunch, deep v kale chips synth pickled four dollar toast gochujang coloring book meh health goth. Pok pok try-hard godard jean shorts tofu squid snackwave 
+    literally master cleanse truffaut poutine sustainable tacos. Lo-fi mumblecore selfies, asymmetrical jianbing tattooed PBR&B skateboard iceland kombucha drinking vinegar leggings salvia DIY. 
+    Copper mug prism selfies twee yr farm-to-table, taiyaki plaid keytar pop-up portland jianbing pug ramps keffiyeh. `,
+
+    secondParagraph: `Actually cred farm-to-table, listicle disrupt stumptown coloring book schlitz fashion axe polaroid hoodie VHS. 
+    Everyday carry farm-to-table bicycle rights affogato. Lumbersexual la croix 90's, vape williamsburg pinterest leggings. Slow-carb paleo tilde, 
+    typewriter freegan crucifix pug microdosing beard irony tbh iceland.`,
+
+    thirdParagraph: `Craft beer deep v aesthetic locavore glossier. Lyft freegan chartreuse kitsch, church-key heirloom readymade food truck roof 
+    party cold-pressed seitan fam. Wolf pickled edison bulb, jianbing next level yr poke craft beer keffiyeh mumblecore tbh truffaut lomo slow-carb. 
+    Pitchfork selfies next level unicorn, cold-pressed crucifix twee cliche gentrify. Hot chicken disrupt farm-to-table echo park microdosing thundercats man bun glossier meggings.
+    Oh. You need a little dummy text for your mockup? How quaint. I bet you’re still using Bootstrap too…`
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
+/* Step 1: Create a function that creates a component. 
+You will want your component to look like the template below: 
   
   <div class="article">
     <h2>{title of the article}</h2>
@@ -101,14 +119,70 @@ const data = [
 
   Hint: You will need to use createElement more than once here!
 
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
 
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+  Your function should take either an object as it's one argument, 
+  or 5 separate arguments mapping to each piece of the data object above.
+
+  Step 2: Add an event listener to the expandButton span. 
+  This event listener should toggle the class 'article-open' on the 'article' div.
 
   Step 3: return the entire component.
 
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+  Step 4: Map over the data, creating a component for each oject and add 
+  each component to the DOM as children of the 'articles' div.
 
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-
+  Step 5: Add a new article to the array. Make sure it is in the 
+  same format as the others. Refresh the page to see the new article.
 */
+
+// creates a function
+const newArticle = (articleTitle, publishDate, p1 , p2, p3) => { 
+
+// create div with class article
+const article = document.createElement('div');
+article.classList.add('article');
+
+
+// creates title and date in memory 
+const title = document.createElement('h2');
+title.textContent = articleTitle;
+
+const date = document.createElement('p');
+date.classList.add('date');
+date.textContent = publishDate;
+
+// creates content holders 
+const contentI = document.createElement('p');
+const contentII = document.createElement('p');
+const contentIII = document.createElement('p');
+
+contentI.textContent = p1;
+contentII.textContent = p2;
+contentIII.textContent = p3;
+
+// creates buttion in memory and adds class
+const button = document.createElement('span');
+button.classList.add('expandButton');
+
+article.appendChild(title);
+article.appendChild(date);
+article.appendChild(contentI);
+article.appendChild(contentII);
+article.appendChild(contentIII);
+article.appendChild(button);
+
+return article;
+
+}
+
+let articleSection = document.querySelector('.articles');
+
+data.forEach((currentItem) =>  {
+  let nextArticle = newArticle(currentItem.title, currentItem.date, currentItem.firstParagraph, currentItem.secondParagraph, currentItem.thirdParagraph)
+  articleSection.appendChild(nextArticle);
+})
+
+
+
+
+
