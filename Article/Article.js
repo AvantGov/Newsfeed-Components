@@ -112,3 +112,16 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+const content = {
+  title: 'I am a new title.',
+  date: new Date(),
+  p1: 'paragraph 1',
+  p2: 'paragraph 2',
+  p3: 'paragraph 3'
+}
+
+
+const createArticle = (content) => {
+
+}
