@@ -113,7 +113,7 @@ const data = [
 
 */
 
-const content = {
+const obj__content = {
   title: 'I am a new title.',
   date: new Date(),
   p1: 'paragraph 1',
@@ -123,5 +123,36 @@ const content = {
 
 
 const createArticle = (content) => {
+  // add container 
+  const elem__container = document.createElement("div")
+  elem__container.classList.add('container')
+
+  // add title item 
+  const elem__title = document.createElement("h1")
+  elem__title.textContent(content.title)
+  elem__title.classList.add('title')
+  elem__container.appendChild(elem__title)
+
+  // add date item
+  const elem__date = document.createElement("span")
+  elem__title.textContent(content.date)
+   
+
+  // add p1 item 
+
+  // add p2 item 
+
+  // add p3 item 
+
 
 }
+
+
+{/* <div class="article">
+<h2>{title of the article}</h2>
+<p class="date">{date of the article}</p>
+
+{three separate paragraph elements}
+
+<span class='expandButton'></span>
+</div> */}
